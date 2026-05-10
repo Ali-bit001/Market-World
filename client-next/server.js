@@ -23,7 +23,7 @@ const simulationService = require('../server/src/services/simulation.service');
 
 const dev = process.env.NODE_ENV !== 'production';
 const requestedPort = Number(process.env.PORT || 5000);
-const hostname = process.env.HOST || 'localhost';
+const hostname = process.env.HOST || (process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost');
 
 const probeRoute = (probePort, probePath, onResponse) => {
   const probeHost = (hostname === '0.0.0.0' || hostname === '::') ? '127.0.0.1' : hostname;
